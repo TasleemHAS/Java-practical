@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+class TelephoneBill 
+{
+    private static final double FIXED_RENT = 400;
+    private static final double CALL_CHARGE = 0.80; // in rupees
+    private int totalCalls;
+
+    public void inputCalls() 
+   {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of calls: ");
+        totalCalls = scanner.nextInt();
+    }
+
+    public double calculateBill() 
+   {
+        double totalBill = FIXED_RENT;
+        if (totalCalls > 50) 
+       {
+            int extraCalls = totalCalls - 50;
+            totalBill += extraCalls * CALL_CHARGE;
+        }
+        return totalBill;
+    }
+
+    public void displayBill() 
+    {
+        System.out.println("Total Telephone Bill: " + calculateBill() + " Rupees");
+    }
+}
+
+public class Main 
+{
+    public static void main(String[] args) 
+   {
+        TelephoneBill bill = new TelephoneBill();
+        bill.inputCalls();
+        bill.displayBill();
+    }
+}
