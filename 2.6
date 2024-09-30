@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+class ReverseNumber 
+{
+    private int number;
+
+    public ReverseNumber(int number)
+    {
+        this.number = number;
+    }
+
+    public int reverseDigits()
+    {
+        int reversed = 0;
+        int temp = number;
+
+        while (temp != 0) 
+        {
+            int digit = temp % 10;
+            reversed = reversed * 10 + digit;
+            temp /= 10;
+        }
+        return reversed;
+    }
+}
+
+public class MainClass 
+{
+    public static void main(String[] args) 
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+
+        ReverseNumber reverseNumber = new ReverseNumber(num);
+        int reversed = reverseNumber.reverseDigits();
+
+        System.out.println("The reversed number is: " + reversed);
+        scanner.close();
+    }
+}
