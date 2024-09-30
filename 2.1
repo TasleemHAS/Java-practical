@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class ExpenseCalculator 
+{
+    private int quantity;
+    private double pricePerItem;
+
+    public ExpenseCalculator(int quantity, double pricePerItem) {
+        this.quantity = quantity;
+        this.pricePerItem = pricePerItem;
+    }
+
+    public double calculateTotalExpenses() 
+    {
+        double totalExpenses = quantity * pricePerItem;
+        if (quantity > 1000) 
+        {
+            double discount = totalExpenses * 0.10;
+            totalExpenses -= discount;
+        }
+        return totalExpenses;
+    }
+
+    public void printTotalExpenses() 
+    {
+        double totalExpenses = calculateTotalExpenses();
+        if (quantity > 1000) 
+        {
+            System.out.println("A discount of 10% has been applied.");
+        } 
+        else 
+        {
+            System.out.println("No discount applicable.");
+        }
+        System.out.printf("Total expenses: $%.2f%n", totalExpenses);
+    }
+
+    public static void main(String[] args) 
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the quantity purchased: ");
+        int quantity = scanner.nextInt();
+        System.out.print("Enter the price per item: ");
+        double pricePerItem = scanner.nextDouble();
+        ExpenseCalculator expenseCalculator = new ExpenseCalculator(quantity, pricePerItem);
+        expenseCalculator.printTotalExpenses();
+    }
+}
