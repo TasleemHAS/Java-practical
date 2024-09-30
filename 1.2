@@ -1,0 +1,74 @@
+class Complete1 
+{
+    byte a;
+    byte b;
+
+    public Complete1(byte a, byte b)
+    {
+        this.a = a;
+        this.b = b;
+    }
+
+    public void display() 
+    {
+        System.out.println("Byte value a: " + a);
+        System.out.println("Byte value b: " + b);
+    }
+}
+
+class Complete2 
+{
+    public int square(int num) 
+    {
+        return num * num;
+    }
+
+    public int cube(int num) 
+    {
+        return num * num * num;
+    }
+}
+
+class Complete3 
+{
+    int x;
+    int y;
+
+    public Complete3(int x, int y) 
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void display() 
+    {
+        System.out.println("Value of x: " + x);
+        System.out.println("Value of y: " + y);
+    }
+
+    public int subtract() 
+    {
+        return x - y;
+    }
+}
+
+public class ClassDemo 
+{
+    public static void main(String[] args) {
+        Complete1 complete1 = new Complete1((byte) 5, (byte) 10);
+        System.out.println("Complete1 Byte Values:");
+        complete1.display();
+        System.out.println();
+
+        Complete2 complete2 = new Complete2();
+        int number = 4;
+        System.out.println("Square of " + number + ": " + complete2.square(number));
+        System.out.println("Cube of " + number + ": " + complete2.cube(number));
+        System.out.println();
+
+        Complete3 complete3 = new Complete3(15, 7);
+        System.out.println("Complete3 Integer Values:");
+        complete3.display();
+        System.out.println("Subtraction (x - y): " + complete3.subtract());
+    }
+}
