@@ -1,0 +1,42 @@
+class Numbers 
+{
+    private int[] cardNumbers;
+    private String[] faceCards;
+    
+    public Numbers() 
+    {
+        cardNumbers = new int[]{2, 3, 4, 5, 6, 7, 8, 9, 10};
+        faceCards = new String[]{"Jack", "Queen", "King", "Ace"};
+    }
+
+    public String getCard(int number) 
+    {
+        if (number >= 2 && number <= 10) 
+        {
+            return "Card: " + number;
+        }
+        return null;
+    }
+
+    public String getFaceCard(String suit)
+    {
+        StringBuilder faceCardDetails = new StringBuilder();
+        for (String faceCard : faceCards)
+        {
+            faceCardDetails.append(faceCard).append(" of ").append(suit).append(", ");
+        }
+        return faceCardDetails.toString();
+    }
+}
+
+public class NumDemo 
+{
+    public static void main(String[] args) 
+    {
+        Numbers playingCards = new Numbers();
+        System.out.println(playingCards.getCard(5));
+        System.out.println(playingCards.getCard(10));
+        System.out.println(playingCards.getFaceCard("Hearts"));
+        System.out.println(playingCards.getFaceCard("Spades"));
+    }
+}
