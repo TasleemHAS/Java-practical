@@ -1,0 +1,62 @@
+import java.util.Arrays;
+import java.util.Comparator;
+
+class MarksTotalOne 
+{
+    private int[] rollNos;
+    private int[][] marks;
+
+    public MarksTotalOne(int[] rollNos, int[][] marks) 
+    {
+        this.rollNos = rollNos;
+        this.marks = marks;
+    }
+
+    public int[] calculateTotalMarks() 
+    {
+        int[] totalMarks = new int[rollNos.length];
+        for (int i = 0; i < rollNos.length; i++) 
+        {
+            totalMarks[i] = marks[i][0] + marks[i][1];
+        }
+        return totalMarks;
+    }
+
+    public void displayRanks()
+    {
+        int[] totalMarks = calculateTotalMarks();
+        Integer[][] rankedStudents = new Integer[rollNos.length][3];
+
+        for (int i = 0; i < rollNos.length; i++)
+        {
+            rankedStudents[i][0] = rollNos[i];
+            rankedStudents[i][1] = totalMarks[i];
+        }
+
+        Arrays.sort(rankedStudents, new Comparator<Integer[]>() 
+        {
+            public int compare(Integer[] a, Integer[] b) 
+            {
+                return b[1].compareTo(a[1]);
+            }
+        });
+
+        System.out.println("Rank\tRoll No\tTotal Marks");
+        for (int i = 0; i < rankedStudents.length; i++)
+        {
+            System.out.println((i + 1) + "\t" + rankedStudents[i][0] + "\t" + rankedStudents[i][1]);
+        }
+    }
+}
+class MarksTotal 
+{
+    public static void main(String[] args) 
+    {
+        MarksTotalOne marksTotalOne = new MarksTotalOne();
+        
+        marksTotalOne.marks = new int[][] { {78, 85}, {65, 90}, {70, 80}, {60, 75}, {85, 95}, {80, 70} };
+        marksTotalOne.rollNo = new int[] {101, 102, 103, 104, 105, 106};
+        
+        marksTotalOne.displayRanks();
+    }
+}
