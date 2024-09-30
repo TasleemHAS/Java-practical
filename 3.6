@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+class CharacterSearch 
+{
+    char[] charArray;
+
+    CharacterSearch(char[] charArray) 
+    {
+        this.charArray = charArray;
+    }
+
+    boolean searchCharacter(char target)
+    {
+        for (char c : charArray) 
+        {
+            if (c == target)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) 
+    {
+        Scanner scanner = new Scanner(System.in);
+        char[] characters = {'a', 'b', 'c', 'd', 'e'};
+        CharacterSearch search = new CharacterSearch(characters);
+        System.out.print("Enter a character to search: ");
+        char target = scanner.next().charAt(0);
+        boolean found = search.searchCharacter(target);
+        if (found) 
+        {
+            System.out.println("Character '" + target + "' found in the array.");
+        } 
+        else 
+        {
+            System.out.println("Character '" + target + "' not found in the array.");
+        }
+        scanner.close();
+    }
+}
