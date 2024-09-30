@@ -1,0 +1,65 @@
+import java.util.Arrays;
+
+class ArrayStats 
+{
+    private double[] array;
+
+    public ArrayStats(double[] array)
+    {
+        this.array = array;
+    }
+
+    public double calculateMean() 
+    {
+        double sum = 0;
+        for (double num : array) 
+        {
+            sum += num;
+        }
+        return sum / array.length;
+    }
+
+    public double calculateThirdQuartile()
+    {
+        Arrays.sort(array);
+        int n = array.length;
+        if (n % 2 == 0) 
+        {
+            double[] upperHalf = Arrays.copyOfRange(array, n / 2, n);
+            return findMedian(upperHalf);
+        }
+        else 
+        {
+            double[] upperHalf = Arrays.copyOfRange(array, (n / 2) + 1, n);
+            return findMedian(upperHalf);
+        }
+    }
+
+    private double findMedian(double[] arr)
+    {
+        int length = arr.length;
+        if (length % 2 == 0) 
+        {
+            return (arr[length / 2 - 1] + arr[length / 2]) / 2.0;
+        } 
+        else 
+        {
+            return arr[length / 2];
+        }
+    }
+}
+
+public class MainClass 
+{
+    public static void main(String[] args)
+    {
+        double[] numbers = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+
+        ArrayStats stats = new ArrayStats(numbers);
+        double mean = stats.calculateMean();
+        double thirdQuartile = stats.calculateThirdQuartile();
+
+        System.out.println("Mean: " + mean);
+        System.out.println("3rd Quartile (Q3): " + thirdQuartile);
+    }
+}
