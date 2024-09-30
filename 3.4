@@ -1,0 +1,55 @@
+public class ArraySum 
+{
+    int[][] array;
+    int sum;
+
+    public ArraySum() 
+    {
+        array = new int[2][3];
+        sum = 0;
+    }
+
+    public void initializeArray()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                array[i][j] = (i + 1) * (j + 1);
+            }
+        }
+    }
+
+    public void calculateSum() 
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            for (int j = 0; j < 3; j++) 
+            {
+                sum += array[i][j];
+            }
+        }
+    }
+
+    public void displayArrays()
+    {
+        System.out.println("Original Array:");
+        for (int[] row : array) 
+        {
+            for (int value : row) 
+            {
+                System.out.print(value + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("Sum of Array Elements: " + sum);
+    }
+
+    public static void main(String[] args)
+    {
+        ArraySum arraySum = new ArraySum();
+        arraySum.initializeArray();
+        arraySum.calculateSum();
+        arraySum.displayArrays();
+    }
+}
