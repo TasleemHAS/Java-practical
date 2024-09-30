@@ -1,0 +1,32 @@
+import java.util.Arrays;
+
+class NumberSorter 
+{
+    private int[] numbers;
+
+    public NumberSorter(int[] numbers)
+    {
+        this.numbers = numbers;
+    }
+
+    public void sortArray() 
+    {
+        Arrays.sort(numbers);
+    }
+
+    public void displayArray() 
+    {
+        System.out.println("Sorted Array: " + Arrays.toString(numbers));
+    }
+}
+
+public class Main 
+{
+    public static void main(String[] args)
+    {
+        int[] numbers = {34, 12, 56, 78, 23, 45, 89, 1};
+        NumberSorter sorter = new NumberSorter(numbers);
+        sorter.sortArray();
+        sorter.displayArray();
+    }
+}
