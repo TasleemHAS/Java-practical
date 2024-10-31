@@ -1,0 +1,40 @@
+class Disp {
+    protected int n;
+
+    public Disp(int n) {
+        this.n = n;
+    }
+
+    public void displayMessage() {
+        if (n < 0) {
+            System.out.println("I am good");
+        } else {
+            System.out.println("I am great");
+        }
+    }
+}
+
+class Display extends Disp {
+    private int m;
+
+    public Display(int n, int m) {
+        super(n);
+        this.m = m;
+    }
+
+    public void displayFruits() {
+        if (m < 10) {
+            System.out.println("I love apples");
+        } else {
+            System.out.println("I love mangoes");
+        }
+    }
+}
+
+class FruitMain {
+    public static void main(String[] args) {
+        Display display = new Display(-5, 12);
+        display.displayMessage();
+        display.displayFruits();
+    }
+}
