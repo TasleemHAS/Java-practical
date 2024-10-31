@@ -1,0 +1,28 @@
+public class AverageCalculator {
+    public static void main(String[] args) {
+        String[] values = {"10.5", "20.0", null, "30.5"};
+
+        try {
+            double avg = average(values);
+            System.out.println("Average: " + avg);
+        } catch (NullPointerException e) {
+            System.out.println("Error: One of the array elements is null.");
+        } catch (NumberFormatException e) {
+            System.out.println("Error: One of the array elements is incorrectly formatted.");
+        }
+    }
+
+    public static double average(String[] values) throws NullPointerException, NumberFormatException {
+        double sum = 0.0;
+        int count = 0;
+
+        for (String value : values) {
+            if (value == null) {
+                throw new NullPointerException();
+            }
+            sum += Double.parseDouble(value);
+            count++;
+        }
+        return sum / count;
+    }
+}
