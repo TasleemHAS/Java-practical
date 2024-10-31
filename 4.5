@@ -1,0 +1,45 @@
+import java.util.ArrayList;
+
+class A {
+    private int y;
+
+    public A(int y) {
+        this.y = y;
+    }
+
+    public void displayDivisors() {
+        ArrayList<Integer> divisors = new ArrayList<>();
+        System.out.print("Divisors of " + y + ": ");
+        for (int i = 1; i <= y; i++) {
+            if (y % i == 0) {
+                divisors.add(i);
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    public boolean isPerfectNumber() {
+        int sumOfDivisors = 0;
+        for (int i = 1; i < y; i++) {
+            if (y % i == 0) {
+                sumOfDivisors += i;
+            }
+        }
+        return sumOfDivisors == y;
+    }
+}
+
+public class B {
+    public static void main(String[] args) {
+        A a = new A(28); // You can change this value to test other numbers
+
+        a.displayDivisors();
+        
+        if (a.isPerfectNumber()) {
+            System.out.println(a.y + " is a perfect number.");
+        } else {
+            System.out.println(a.y + " is not a perfect number.");
+        }
+    }
+}
