@@ -1,0 +1,16 @@
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class NameApplet extends Applet {
+    String name;
+
+    @Override
+    public void init() {
+        name = getParameter("name"); // Retrieve the name from HTML parameter
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        g.drawString("What is your name? " + name, 20, 20);
+    }
+}
