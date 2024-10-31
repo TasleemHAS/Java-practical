@@ -1,0 +1,22 @@
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.*;
+
+public class BrightenBackgroundApplet extends Applet {
+    private Color backgroundColor = Color.BLACK;
+
+    public void init() {
+        setBackground(backgroundColor);
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int red = Math.min(backgroundColor.getRed() + 10, 255);
+                int green = Math.min(backgroundColor.getGreen() + 10, 255);
+                int blue = Math.min(backgroundColor.getBlue() + 10, 255);
+                backgroundColor = new Color(red, green, blue);
+                setBackground(backgroundColor);
+                repaint();
+            }
+        });
+    }
+}
