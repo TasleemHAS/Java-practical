@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+class Marks {
+    private String studentName;
+    private int paper1;
+    private int paper2;
+
+    public Marks(String studentName, int paper1, int paper2) {
+        this.studentName = studentName;
+        this.paper1 = paper1;
+        this.paper2 = paper2;
+    }
+
+    public double calculateAverage() {
+        return (paper1 + paper2) / 2.0;
+    }
+
+    public void display() {
+        System.out.println("Student Name: " + studentName);
+        System.out.println("Marks in Paper 1: " + paper1);
+        System.out.println("Marks in Paper 2: " + paper2);
+        System.out.printf("Average Marks: %.2f\n", calculateAverage());
+    }
+}
+
+public class Marks1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter student name: ");
+        String studentName = scanner.nextLine();
+
+        System.out.print("Enter marks for Paper 1: ");
+        int paper1 = scanner.nextInt();
+
+        System.out.print("Enter marks for Paper 2: ");
+        int paper2 = scanner.nextInt();
+
+        Marks studentMarks = new Marks(studentName, paper1, paper2);
+        studentMarks.display();
+
+        scanner.close();
+    }
+}
