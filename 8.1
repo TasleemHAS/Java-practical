@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class SuperclassCounter {
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            System.out.println("Please provide a fully qualified class name as an argument.");
+            return;
+        }
+
+        String className = args[0];
+
+        try {
+            Class<?> clazz = Class.forName(className);
+            int count = 0;
+            while (clazz.getSuperclass() != null) {
+                count++;
+                clazz = clazz.getSuperclass();
+            }
+            System.out.println("Number of superclasses: " + count);
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error: Class not found - " + className);
+        }
+    }
+}
