@@ -1,0 +1,28 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class TabToSpaceConverter {
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.out.println("Please provide an input file and an output file as arguments.");
+            return;
+        }
+
+        String inputFile = args[0];
+        String outputFile = args[1];
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                writer.write(line.replace("\t", " "));
+            }
+            System.out.println("Tabs converted to spaces and written to " + outputFile);
+        } catch (IOException e) {
+            System.out.println("Error processing files: " + e.getMessage());
+        }
+    }
+}
