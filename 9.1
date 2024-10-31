@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class CircleAreaCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double radius = -1;
+
+        while (radius < 0) {
+            System.out.print("Enter the radius of the circle: ");
+            String input = scanner.nextLine();
+
+            try {
+                radius = Double.parseDouble(input);
+                if (radius < 0) {
+                    System.out.println("Please enter a non-negative number.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+            }
+        }
+
+        double area = Math.PI * Math.pow(radius, 2);
+        System.out.printf("The area of the circle with radius %.2f is %.2f%n", radius, area);
+    }
+}
