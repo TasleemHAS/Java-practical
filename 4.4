@@ -1,0 +1,47 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+
+class Employee implements Comparable<Employee> {
+    private String name;
+    private LocalDate dateOfAppointment;
+
+    public Employee(String name, String dateOfAppointment) {
+        this.name = name;
+        this.dateOfAppointment = LocalDate.parse(dateOfAppointment, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public LocalDate getDateOfAppointment() {
+        return dateOfAppointment;
+    }
+
+    public int compareTo(Employee other) {
+        return this.dateOfAppointment.compareTo(other.dateOfAppointment);
+    }
+
+    public String display() {
+        return "Name: " + name + ", Date of Appointment: " + dateOfAppointment;
+    }
+}
+
+public class EmployeeDemo {
+    public static void main(String[] args) {
+        Employee[] employees = new Employee[5];
+        employees[0] = new Employee("Alice", "2020-01-15");
+        employees[1] = new Employee("Bob", "2019-03-22");
+        employees[2] = new Employee("Charlie", "2021-06-30");
+        employees[3] = new Employee("Diana", "2018-09-10");
+        employees[4] = new Employee("Eve", "2022-12-01");
+
+        Arrays.sort(employees);
+
+        System.out.println("Employees sorted by date of appointment (seniority):");
+        for (Employee employee : employees) {
+            System.out.println(employee.display());
+        }
+    }
+}
