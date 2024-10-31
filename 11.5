@@ -1,0 +1,43 @@
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.*;
+
+public class CircleDrawingApplet extends Applet {
+    private int centerX, centerY, radius;
+    private boolean isDrawing = false;
+
+    public void init() {
+        setBackground(Color.WHITE);
+        
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                centerX = e.getX();
+                centerY = e.getY();
+                isDrawing = true;
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                isDrawing = false;
+                repaint();
+            }
+        });
+
+        addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                radius = (int) Math.sqrt(Math.pow(e.getX() - centerX, 2) + Math.pow(e.getY() - centerY, 2));
+                repaint();
+            }
+        });
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        if (isDrawing) {
+            g.setColor(Color.BLACK);
+            g.drawOval(centerX - radius, centerY - radius, radius * 2, radius * 2);
+        }
+    }
+}
