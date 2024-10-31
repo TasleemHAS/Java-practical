@@ -1,0 +1,45 @@
+class Cube {
+    protected double length;
+
+    public Cube(double length) {
+        this.length = length;
+    }
+
+    public double surface() {
+        return 6 * Math.pow(length, 2);
+    }
+
+    public void display() {
+        System.out.println("Length of cube: " + length);
+    }
+}
+
+class Cuboid extends Cube {
+    private double height;
+    private double breadth;
+
+    public Cuboid(double length, double height, double breadth) {
+        super(length);
+        this.height = height;
+        this.breadth = breadth;
+    }
+
+    public double volume() {
+        return length * height * breadth;
+    }
+
+    public void display() {
+        super.display();
+        System.out.println("Height of cuboid: " + height);
+        System.out.println("Breadth of cuboid: " + breadth);
+    }
+}
+
+class CubeCuboid {
+    public static void main(String[] args) {
+        Cuboid cuboid = new Cuboid(3, 4, 5);
+        System.out.println("Surface area of cube: " + cuboid.surface());
+        cuboid.display();
+        System.out.println("Volume of cuboid: " + cuboid.volume());
+    }
+}
