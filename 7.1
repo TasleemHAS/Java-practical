@@ -1,0 +1,111 @@
+// Animal.java
+abstract class Animal {
+    public abstract String getType();
+}
+
+// Bird.java
+abstract class Bird extends Animal {
+    @Override
+    public String getType() {
+        return "Bird";
+    }
+}
+
+// Reptile.java
+abstract class Reptile extends Animal {
+    @Override
+    public String getType() {
+        return "Reptile";
+    }
+}
+
+// Dove.java
+class Dove extends Bird {
+    @Override
+    public String getType() {
+        return "Dove";
+    }
+}
+
+// Eagle.java
+class Eagle extends Bird {
+    @Override
+    public String getType() {
+        return "Eagle";
+    }
+}
+
+// Hawk.java
+class Hawk extends Bird {
+    @Override
+    public String getType() {
+        return "Hawk";
+    }
+}
+
+// Penguin.java
+class Penguin extends Bird implements OceanDwelling {
+    @Override
+    public String getType() {
+        return "Penguin";
+    }
+}
+
+// Seagull.java
+class Seagull extends Bird implements OceanDwelling {
+    @Override
+    public String getType() {
+        return "Seagull";
+    }
+}
+
+// RattleSnake.java
+class RattleSnake extends Reptile implements ColdBlooded {
+    @Override
+    public String getType() {
+        return "Rattle Snake";
+    }
+}
+
+// Turtle.java
+class Turtle extends Reptile implements ColdBlooded, OceanDwelling {
+    @Override
+    public String getType() {
+        return "Turtle";
+    }
+}
+
+// ColdBlooded.java
+interface ColdBlooded {}
+
+// OceanDwelling.java
+interface OceanDwelling {}
+
+// MainAnimal.java
+public class MainAnimal {
+    public static void main(String[] args) {
+        Animal[] animals = {
+            new Dove(),
+            new Eagle(),
+            new Hawk(),
+            new Penguin(),
+            new Seagull(),
+            new RattleSnake(),
+            new Turtle()
+        };
+
+        System.out.println("Cold-Blooded Animals:");
+        for (Animal animal : animals) {
+            if (animal instanceof ColdBlooded) {
+                System.out.println(animal.getType());
+            }
+        }
+
+        System.out.println("\nOcean-Dwelling Animals:");
+        for (Animal animal : animals) {
+            if (animal instanceof OceanDwelling) {
+                System.out.println(animal.getType());
+            }
+        }
+    }
+}
