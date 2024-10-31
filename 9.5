@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class AlphaReverse {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a string (type 'exit' to quit):");
+
+        while (true) {
+            String input = scanner.nextLine();
+            if (input.equalsIgnoreCase("exit")) {
+                break;
+            }
+            String reversed = reverseAlphas(input);
+            System.out.println("Reversed: " + reversed);
+        }
+    }
+
+    private static String reverseAlphas(String input) {
+        StringBuilder alphaChars = new StringBuilder();
+        
+        // Extract only the alpha characters
+        for (char c : input.toCharArray()) {
+            if (Character.isLetter(c)) {
+                alphaChars.append(c);
+            }
+        }
+
+        alphaChars.reverse(); // Reverse the collected alpha characters
+        StringBuilder result = new StringBuilder();
+        int alphaIndex = 0;
+
+        // Rebuild the string with reversed alpha characters
+        for (char c : input.toCharArray()) {
+            if (Character.isLetter(c)) {
+                result.append(alphaChars.charAt(alphaIndex));
+                alphaIndex++;
+            } else {
+                result.append(c); // Keep non-alpha characters in the same position
+            }
+        }
+
+        return result.toString();
+    }
+}
