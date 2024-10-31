@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Salary Applet</title>
+</head>
+<body>
+    <applet code="EmployeeSalaryApplet.class" width="450" height="300"></applet>
+</body>
+</html>
