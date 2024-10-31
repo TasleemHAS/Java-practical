@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Name Applet</title>
+</head>
+<body>
+    <applet code="NameApplet.class" width="300" height="100">
+        <param name="name" value="John Doe">
+    </applet>
+</body>
+</html>
