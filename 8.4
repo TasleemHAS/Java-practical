@@ -1,0 +1,42 @@
+class MarksOutOfBoundsException extends Exception {
+    public MarksOutOfBoundsException(String message) {
+        super(message);
+    }
+}
+
+class Student {
+    private String name;
+    private String rollNo;
+    private int[] marks = new int[3];
+
+    public Student(String name, String rollNo, int mark1, int mark2, int mark3) throws MarksOutOfBoundsException {
+        this.name = name;
+        this.rollNo = rollNo;
+        setMarks(mark1, mark2, mark3);
+    }
+
+    private void setMarks(int mark1, int mark2, int mark3) throws MarksOutOfBoundsException {
+        if (mark1 > 100 || mark2 > 100 || mark3 > 100) {
+            throw new MarksOutOfBoundsException("Marks cannot be greater than 100.");
+        }
+        this.marks[0] = mark1;
+        this.marks[1] = mark2;
+        this.marks[2] = mark3;
+    }
+
+    public void display() {
+        System.out.println("Student: " + name + ", Roll No: " + rollNo);
+        System.out.println("Marks: " + marks[0] + ", " + marks[1] + ", " + marks[2]);
+    }
+}
+
+public class MarksValidation {
+    public static void main(String[] args) {
+        try {
+            Student student = new Student("John Doe", "123", 90, 95, 110);
+            student.display();
+        } catch (MarksOutOfBoundsException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
