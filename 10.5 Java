@@ -1,0 +1,74 @@
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class EmployeeSalaryApplet extends Applet implements ActionListener {
+    TextField empNoField, basicPayField, deptField;
+    TextArea outputArea;
+    Button calculateButton;
+
+    @Override
+    public void init() {
+        // Create labels and text fields for inputs
+        Label empNoLabel = new Label("Employee No: ");
+        empNoField = new TextField(20);
+        
+        Label basicPayLabel = new Label("Basic Pay: ");
+        basicPayField = new TextField(20);
+        
+        Label deptLabel = new Label("Department: ");
+        deptField = new TextField(20);
+        
+        // Create button to calculate salary
+        calculateButton = new Button("Calculate Salary");
+        calculateButton.addActionListener(this);
+        
+        // Create area to display the output
+        outputArea = new TextArea(10, 40);
+        outputArea.setEditable(false);
+        
+        // Add components to the applet
+        add(empNoLabel);
+        add(empNoField);
+        add(basicPayLabel);
+        add(basicPayField);
+        add(deptLabel);
+        add(deptField);
+        add(calculateButton);
+        add(outputArea);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // Get input values
+        String empNo = empNoField.getText();
+        double basicPay = Double.parseDouble(basicPayField.getText());
+        String dept = deptField.getText();
+        
+        // Calculate D.A., H.R.A., C.C.A., and Gross Salary
+        double da = 0.0, hra = 0.0, cca = 350.0; // Default CCA
+        if (basicPay < 5000) {
+            da = 0.81 * basicPay;
+            hra = 0.15 * basicPay;
+        } else if (basicPay >= 5000 && basicPay <= 7000) {
+            da = 0.51 * basicPay;
+            hra = 0.15 * basicPay;
+        } else {
+            da = 0.41 * basicPay;
+            hra = 0.15 * basicPay;
+        }
+        
+        double grossSalary = basicPay + da + hra + cca;
+
+        // Display the salary slip
+        outputArea.setText("Salary Slip:\n");
+        outputArea.append("Employee No: " + empNo + "\n");
+        outputArea.append("Department: " + dept + "\n");
+        outputArea.append("Basic Pay: " + basicPay + "\n");
+        outputArea.append("D.A.: " + da + "\n");
+        outputArea.append("H.R.A.: " + hra + "\n");
+        outputArea.append("C.C.A.: " + cca + "\n");
+        outputArea.append("Gross Salary: " + grossSalary + "\n");
+    }
+}
