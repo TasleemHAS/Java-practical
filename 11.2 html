@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Applet Example</title>
+</head>
+<body>
+    <applet code="MouseTrackerApplet.class" width="400" height="300"></applet>
+    <applet code="ColorChangeApplet.class" width="400" height="300"></applet>
+    <applet code="ColorChangeAnonymousApplet.class" width="400" height="300"></applet>
+    <applet code="BrightenBackgroundApplet.class" width="400" height="300"></applet>
+    <applet code="CircleDrawingApplet.class" width="400" height="300"></applet>
+</body>
+</html>
