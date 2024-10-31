@@ -1,0 +1,30 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+class Baby {
+    private String name;
+    private LocalDate dob;
+    private LocalDate bctDate;
+    private LocalDate polioDate;
+
+    public Baby(String name, String dob) {
+        this.name = name;
+        this.dob = LocalDate.parse(dob, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        this.bctDate = dob.plusDays(16);
+        this.polioDate = dob.plusDays(45);
+    }
+
+    public void displayDetails() {
+        System.out.println("Baby Name: " + name);
+        System.out.println("Date of Birth: " + dob);
+        System.out.println("BCT Injection Date: " + bctDate);
+        System.out.println("Polio Injection Date: " + polioDate);
+    }
+}
+
+public class BabyDetails {
+    public static void main(String[] args) {
+        Baby baby = new Baby("John", "2024-10-01");
+        baby.displayDetails();
+    }
+}
