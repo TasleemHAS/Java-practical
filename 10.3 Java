@@ -1,0 +1,33 @@
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class ShapesApplet extends Applet {
+    @Override
+    public void paint(Graphics g) {
+        // Rectangle inside Circle
+        g.setColor(Color.CYAN);
+        g.fillOval(50, 50, 100, 100); // Circle
+        
+        g.setColor(Color.YELLOW);
+        g.fillRect(75, 75, 50, 50); // Rectangle inside Circle
+
+        // Circle inside Rectangle
+        g.setColor(Color.GREEN);
+        g.fillRect(200, 50, 100, 100); // Rectangle
+        
+        g.setColor(Color.ORANGE);
+        g.fillOval(225, 75, 50, 50); // Circle inside Rectangle
+        
+        // Tangent to Circle
+        g.setColor(Color.RED);
+        g.drawOval(400, 50, 100, 100); // Circle
+        g.drawLine(400, 100, 500, 100); // Tangent
+
+        // Two intersecting tangents to a circle
+        g.setColor(Color.BLUE);
+        g.drawOval(400, 200, 100, 100); // Circle
+        g.drawLine(450, 200, 600, 150); // Tangent
+        g.drawLine(450, 200, 600, 250); // Tangent
+    }
+}
