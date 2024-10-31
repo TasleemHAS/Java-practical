@@ -1,0 +1,23 @@
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.*;
+
+public class ColorChangeAnonymousApplet extends Applet {
+    public void init() {
+        setBackground(Color.WHITE);
+        
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                setBackground(Color.RED);
+                repaint();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                setBackground(Color.GREEN);
+                repaint();
+            }
+        });
+    }
+}
