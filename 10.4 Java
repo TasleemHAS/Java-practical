@@ -1,0 +1,24 @@
+import java.applet.Applet;
+import java.awt.Graphics;
+import java.awt.TextField;
+
+public class UserIdPasswordApplet extends Applet {
+    TextField userIdField;
+    TextField passwordField;
+
+    @Override
+    public void init() {
+        userIdField = new TextField(20);
+        passwordField = new TextField(20);
+        passwordField.setEchoChar('*');
+
+        add(userIdField);
+        add(passwordField);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        g.drawString("User ID: ", 20, 50);
+        g.drawString("Password: ", 20, 100);
+    }
+}
