@@ -1,0 +1,29 @@
+class Car {
+    private String color;
+    private String body;
+
+    public Car() {
+        this.color = "blue";
+        this.body = "green";
+    }
+
+    public Car(String color, String body) {
+        this.color = color;
+        this.body = body;
+    }
+
+    public void display() {
+        if (color.equalsIgnoreCase("blue")) {
+            System.out.println("Car is blue.");
+        } else {
+            System.out.println("Color: " + color + ", Body: " + body);
+        }
+    }
+}
+
+public class CarDemo {
+    public static void main(String[] args) {
+        Car myCar = new Car("red", "water tank");
+        myCar.display();
+    }
+}
