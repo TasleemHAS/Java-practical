@@ -1,0 +1,27 @@
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.*;
+
+public class MouseTrackerApplet extends Applet implements MouseMotionListener {
+    @Override
+    public void init() {
+        setBackground(Color.WHITE);
+        addMouseMotionListener(this);
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        repaint();
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        repaint();
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        g.setColor(Color.BLUE);
+        g.fillRect(getMousePosition().x, getMousePosition().y, 10, 10);
+    }
+}
