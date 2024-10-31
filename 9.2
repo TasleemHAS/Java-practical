@@ -1,0 +1,28 @@
+import java.io.File;
+
+public class DirectoryTree {
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Please provide a file or directory path as an argument.");
+            return;
+        }
+
+        File file = new File(args[0]);
+        displayDirectoryTree(file, 0);
+    }
+
+    public static void displayDirectoryTree(File file, int level) {
+        if (file.exists()) {
+            if (file.isDirectory()) {
+                System.out.println("  ".repeat(level) + "[DIR] " + file.getName());
+                for (File child : file.listFiles()) {
+                    displayDirectoryTree(child, level + 1);
+                }
+            } else {
+                System.out.println("  ".repeat(level) + "[FILE] " + file.getName());
+            }
+        } else {
+            System.out.println("The specified file or directory does not exist.");
+        }
+    }
+}
