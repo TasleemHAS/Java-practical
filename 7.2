@@ -1,0 +1,130 @@
+// Robot.java
+abstract class Robot {
+    public abstract void beep();
+}
+
+// RobotA.java
+abstract class RobotA extends Robot {
+    @Override
+    public void beep() {
+        System.out.println("RobotA beeping");
+    }
+}
+
+// RobotA1.java
+class RobotA1 extends RobotA {}
+
+// RobotB.java
+abstract class RobotB extends Robot {
+    @Override
+    public void beep() {
+        System.out.println("RobotB beeping");
+    }
+}
+
+// RobotB1.java
+class RobotB1 extends RobotB {}
+
+// RobotB2.java
+class RobotB2 extends RobotB {}
+
+// RobotC.java
+abstract class RobotC extends Robot {
+    @Override
+    public void beep() {
+        System.out.println("RobotC beeping");
+    }
+}
+
+// RobotC1.java
+class RobotC1 extends RobotC {}
+
+// Locomotion.java
+interface Locomotion {
+    void forward();
+    void reverse();
+    void stop();
+}
+
+// Implementing Locomotion in RobotB and RobotC
+class RobotB1 extends RobotB implements Locomotion {
+    @Override
+    public void forward() {
+        System.out.println("RobotB1 moving forward");
+    }
+
+    @Override
+    public void reverse() {
+        System.out.println("RobotB1 reversing");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("RobotB1 stopping");
+    }
+}
+
+class RobotB2 extends RobotB implements Locomotion {
+    @Override
+    public void forward() {
+        System.out.println("RobotB2 moving forward");
+    }
+
+    @Override
+    public void reverse() {
+        System.out.println("RobotB2 reversing");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("RobotB2 stopping");
+    }
+}
+
+class RobotC1 extends RobotC implements Locomotion {
+    @Override
+    public void forward() {
+        System.out.println("RobotC1 moving forward");
+    }
+
+    @Override
+    public void reverse() {
+        System.out.println("RobotC1 reversing");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("RobotC1 stopping");
+    }
+}
+
+// MainRobot.java
+package robots;
+
+public class MainRobot {
+    public static void main(String[] args) {
+        RobotA1 robotA1 = new RobotA1();
+        RobotB1 robotB1 = new RobotB1();
+        RobotB2 robotB2 = new RobotB2();
+        RobotC1 robotC1 = new RobotC1();
+
+        Robot[] robots = {robotA1, robotB1, robotB2, robotC1};
+
+        for (Robot robot : robots) {
+            if (robot instanceof Sound) {
+                robot.beep();
+            }
+        }
+
+        for (Robot robot : robots) {
+            if (robot instanceof Locomotion) {
+                ((Locomotion) robot).stop();
+            }
+        }
+    }
+}
+
+// Sound.java
+interface Sound {
+    void beep();
+}
